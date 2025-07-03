@@ -1,0 +1,7 @@
+# kyvernovis/charts/kyvernovis/Chart.yaml
+apiVersion: v2
+name: kyvernovis
+description: A simple Kyverno policy visualizer (Community edition)
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

@@ -1,0 +1,12 @@
+# kyvernovis/charts/kyvernovis/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kyvernovis.fullname" . }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ include "kyvernovis.name" . }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 80

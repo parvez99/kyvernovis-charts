@@ -1,0 +1,23 @@
+# kyvernovis/charts/kyvernovis/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kyvernovis.fullname" . }}
+  labels:
+    app: {{ include "kyvernovis.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "kyvernovis.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "kyvernovis.name" . }}
+    spec:
+      containers:
+        - name: kyvernovis
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80

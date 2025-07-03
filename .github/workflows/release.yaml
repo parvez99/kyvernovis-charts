@@ -1,0 +1,33 @@
+name: Release Helm Chart
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.12.0
+
+      - name: Package chart
+        run: |
+          mkdir -p .cr-release-packages
+          helm package charts/kyvernovis --destination .cr-release-packages
+
+      - name: Update Helm repo index
+        run: |
+          helm repo index .cr-release-packages --url https://parvez99.github.io/kyvernovis-charts/
+
+      - name: Push to GitHub Pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .cr-release-packages
