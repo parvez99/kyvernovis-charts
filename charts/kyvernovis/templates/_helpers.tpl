@@ -3,6 +3,10 @@
 kyvernovis
 {{- end -}}
 
+{{- define "kyvernovis.namespace" -}}
+kyvernovis
+{{- end -}}
+
 {{- define "kyvernovis.fullname" -}}
 {{ include "kyvernovis.name" . }}
 {{- end -}}

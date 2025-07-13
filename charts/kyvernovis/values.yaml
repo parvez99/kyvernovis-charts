@@ -2,8 +2,8 @@
 replicaCount: 1
 
 image:
-  repository: parvez99/kyvernovis
-  tag: latest
+  repository: parvezmulani/kyvernovis
+  tag: "0.1.2"
   pullPolicy: IfNotPresent
 
 service:
@@ -11,18 +11,39 @@ service:
   port: 80
 
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location ^~ /.well-known/acme-challenge/ {
+        root /usr/share/nginx/html;
+        allow all;
+      }
+
   hosts:
-    - host: kyvernovis.local
+    - host: test.kyvernovis.com
       paths:
         - path: /
-          pathType: Prefix
-  tls: []
-
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: kyvernovis-tls
+      hosts:
+        - test.kyvernovis.com
 resources: {}
 
 nodeSelector: {}
 tolerations: []
 affinity: []
+
+env:
+  POLICY_SOURCE: "local"  # or "git"
+  POLICY_LIMIT: "20"
+  GIT_REPO: ""
+  GIT_BRANCH: "main"
+  GIT_DIRECTORY: "policies"
+
+secretEnv:
+  GIT_TOKEN: ""  # Optional: for private repos
+
+

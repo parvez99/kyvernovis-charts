@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kyvernovis-env
+data:
+  VITE_POLICY_SOURCE: "{{ .Values.env.POLICY_SOURCE }}"
+  VITE_POLICY_LIMIT: "{{ .Values.env.POLICY_LIMIT }}"
+  VITE_GIT_REPO: "{{ .Values.env.GIT_REPO }}"
+  VITE_GIT_BRANCH: "{{ .Values.env.GIT_BRANCH }}"
+  VITE_GIT_DIRECTORY: "{{ .Values.env.GIT_DIRECTORY }}"

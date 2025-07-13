@@ -21,3 +21,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: kyvernovis-env
+            - secretRef:
+                name: kyvernovis-secret
+

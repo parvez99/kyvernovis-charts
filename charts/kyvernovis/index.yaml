@@ -1,0 +1,24 @@
+apiVersion: v1
+entries:
+  kyvernovis:
+  - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2025-07-13T17:23:16.715806+02:00"
+    description: A simple Kyverno policy visualizer (Community edition)
+    digest: fd9cb221729db1c4011f14eeb1e830b3b7d69d58fc902b03ce6f35b807873dce
+    name: kyvernovis
+    type: application
+    urls:
+    - https://github.com/parvez99/kyvernovis-charts.git/kyvernovis-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-07-13T17:23:16.715464+02:00"
+    description: A simple Kyverno policy visualizer (Community edition)
+    digest: cbdffd8763e0ff630d8cda8cadb9e28489a106c067ba8dc2f785a001ef693e00
+    name: kyvernovis
+    type: application
+    urls:
+    - https://github.com/parvez99/kyvernovis-charts.git/kyvernovis-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-07-13T17:23:16.715082+02:00"
