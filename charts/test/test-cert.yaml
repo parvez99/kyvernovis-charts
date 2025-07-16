@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kyvernovis-cert
+  namespace: kyvernovis
+spec:
+  secretName: kyvernovis-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - test.kyvernovis.com
